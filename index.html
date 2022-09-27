@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <title>IoT_bootstrap</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="/bootstrap-5.2.1-dist/css/bootstrap.min.css">
+        <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+        <script src="./highchart_lib.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron text-center text-warning bg-info ">
+            <h2>IoT</h2>
+            <h2>Nguyễn Xuân Tuy- B19DCDT210</h2>
+          </div>
+        <div class="row text-center text-white">
+            <div  class="col-4 op-1 " id="ND"> 
+            <h2 class="text-while">Nhiệt độ</h2>
+                     <p> <h1 id=ND2></h1></p></div>
+            <div class="col-4 op-2" id="DA"> <h2>Độ ẩm</h2>
+                    <p><h1 id="DA2"></h1></p> </div>
+            <div class="col-4 op-3" id="AS"> <h2>Ánh sáng</h2>
+                    <p><h1 id="AS2"></h1></p></div>
+            <!-- <div class="col-3 op-3" id="KG"> <h2>Khí gas</h2>
+                    <p><h1 id="KG2"></h1></p></div> -->
+        </div>
+        <div class="row text-center">
+            <div class="col-sm-8" style="background-color:pink;">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description">
+                        Basic line chart showing trends in a dataset. This chart includes the
+                        <code>series-label</code> module, which adds a label to each line for
+                        enhanced readability.
+                    </p>
+                </figure>
+            </div>
+            <div class="col-sm-4 text-center text-danger " > 
+                <div class=" row "  style="height: 250px" > 
+                    <img src="leb_off.png" alt="leb_off" style="height:55% ; width: 100%;" id="nutnhan1"> 
+                    <h2>LED 1</h2>
+                    <div class="container">
+                        <button type="button" class="btn btn-success btn-lg" onclick="btn1on()">ON</button>  
+                         <button type="button" class="btn btn-danger btn-lg" onclick="btn1off()">OFF</button>
+                    </div>
+                </div>
+                <div class="row" style="height: 250px; "> 
+                    <img src="leb_off.png" alt="leb_off" style="height:55% ; width: 100%;" id="nutnhan2"> 
+                    <h2>LED 2</h2>
+                    <div class="container">
+                          <button type="button" class="btn btn-success btn-lg" onclick="btn2on()">ON</button>  
+                          <button type="button" class="btn btn-danger btn-lg" onclick="btn2off()">OFF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+    Highcharts.chart('container', {
+
+title: {
+    text: 'Biểu đồ IoT trong 10s theo thời gian thực'
+},
+
+// subtitle: {
+//     text: 'Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>'
+// },
+
+yAxis: {
+    title: {
+        text: 'Giá trị'
+    }
+},
+
+xAxis: {
+    accessibility: {
+        rangeDescription: 'Thời gian'
+    }
+},
+
+// legend: {
+//     layout: 'vertical',
+//     align: 'right',
+//     verticalAlign: 'middle'
+// },
+
+// plotOptions: {
+//     series: {
+//         label: {
+//             connectorAllowed: false
+//         },
+//         pointStart: 0
+//     }
+// },
+
+series: [{
+    name: 'Nhiệt độ',
+    data: [50, 50,50,50,50,50,50,50,50,50]
+}, {
+    name: 'Độ ẩm',
+    data: [60, 60,60,60,60,60,60,60,60,60]
+}, {
+    name: 'Ánh sáng',
+    data: [70,70,70,70,70,70,70,70,70,70]
+// }, {
+//     name: 'Operations & Maintenance',
+//     data: [null, null, null, null, null, null, null,
+//         null, 11164, 11218, 10077]
+// }, {
+//     name: 'Other',
+//     data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
+//         17300, 13053, 11906, 10073]
+}],
+
+// responsive: {
+//     rules: [{
+//         condition: {
+//             maxWidth: 500
+//         },
+//         chartOptions: {
+//             legend: {
+//                 layout: 'horizontal',
+//                 align: 'center',
+//                 verticalAlign: 'bottom'
+//             }
+//         }
+//     }]
+// }
+
+});
+</script>
+    
+</body>
+<script src="./main.js"></script>
+
+</html>
