@@ -1,4 +1,8 @@
 
+const dataND=[0,0,0,0,0,0,0,0,0,0]
+const dataDA=[0,0,0,0,0,0,0,0,0,0]
+const dataAS=[0,0,0,0,0,0,0,0,0,0]
+
 setInterval( function myTimer() {
     var nhietDo=Math.floor(Math.random()*45);
     var doAm=Math.floor(Math.random()*101);
@@ -6,12 +10,24 @@ setInterval( function myTimer() {
     // var khiGas=Math.floor(Math.random()*100);
    
     // beautifuksoup, request, selenium va selenium wire
-    document.getElementById("ND2").innerHTML=nhietDo;
-    document.getElementById("DA2").innerHTML=doAm;
-    document.getElementById("AS2").innerHTML=anhSang;
+    document.getElementById("ND2").innerHTML=nhietDo +"℃";
+    document.getElementById("DA2").innerHTML=doAm +"%";
+    document.getElementById("AS2").innerHTML=anhSang +"lux";
     // document.getElementById("KG2").innerHTML=khiGas;
-
-
+    // for(var i=9;i>=1;i--){
+    //     dataAS[i]=dataAS[i-1];
+    //     dataDA[i]=dataDA[i-1];
+    //     dataND[i]=dataND[i-1];
+    // }
+    // dataAS[0]=nhietDo;
+    // dataDA[0]=doAm;
+    // dataND[0]=anhSang;
+    function bieuDo(){
+        dataAS.push(anhSang); dataAS.shift();
+        dataDA.push(doAm); dataDA.shift();
+        dataND.push(nhietDo); dataND.shift();
+    }
+    bieuDo();
 function KTnhietdo(nhietDo){
 if(nhietDo < 22) {
     document.getElementById("ND").style.background="#F8D1AF"
@@ -60,13 +76,85 @@ function KTanhsang(anhSang){
 //             // alert("kHí gas bị rò rỉ nhiều.")
 //         }
     // }
+ 
+    Highcharts.chart('container', {
 
-
+        title: {
+            text: 'Biểu đồ IoT trong 30s theo thời gian thực'
+        },
+        
+        // subtitle: {
+        //     text: 'Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>'
+        // },
+        
+        yAxis: {
+            title: {
+                text: 'Giá trị'
+            }
+        },
+        
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Thời gian'
+            }
+        },
+        
+        // legend: {
+        //     layout: 'vertical',
+        //     align: 'right',
+        //     verticalAlign: 'middle'
+        // },
+        
+        // plotOptions: {
+        //     series: {
+        //         label: {
+        //             connectorAllowed: false
+        //         },
+        //         pointStart: 0
+        //     }
+        // },
+        
+        series: [{
+            name: 'Nhiệt độ',
+            data: dataND
+        }, {
+            name: 'Độ ẩm',
+            data: dataDA
+        }, {
+            name: 'Ánh sáng',
+            data: dataAS
+        // }, {
+        //     name: 'Operations & Maintenance',
+        //     data: [null, null, null, null, null, null, null,
+        //         null, 11164, 11218, 10077]
+        // }, {
+        //     name: 'Other',
+        //     data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
+        //         17300, 13053, 11906, 10073]
+        }],
+        
+        // responsive: {
+        //     rules: [{
+        //         condition: {
+        //             maxWidth: 500
+        //         },
+        //         chartOptions: {
+        //             legend: {
+        //                 layout: 'horizontal',
+        //                 align: 'center',
+        //                 verticalAlign: 'bottom'
+        //             }
+        //         }
+        //     }]
+        // }
+        
+        });
+ 
 KTnhietdo(nhietDo);
 KTdoam(doAm);
 KTanhsang(anhSang);
 // KTkhigas(khiGas);
-},1000)
+},2000)
 function btn1on(){
     if(confirm("Bạn có chắc chắn bật đèn")==true){
     document.getElementById("nutnhan1").src ="leb_on.png"
