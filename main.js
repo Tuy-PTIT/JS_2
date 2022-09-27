@@ -70,24 +70,33 @@ KTanhsang(anhSang);
 function btn1on(){
     if(confirm("Bạn có chắc chắn bật đèn")==true){
     document.getElementById("nutnhan1").src ="leb_on.png"
+    document.getElementById("led_on1").style.background="green"
+    document.getElementById("led_off1").style.background="gray"
+
     }
 }
 
 function btn1off(){
     if(confirm("Bạn có chắc chắn tắt đèn")==true){
     document.getElementById("nutnhan1").src = "leb_off.png"
+    document.getElementById("led_on1").style.background="gray"
+    document.getElementById("led_off1").style.background="red"
     }
 }
 
 function btn2on(){
     if(confirm("Bạn có chắc chắn bật đèn")==true){
     document.getElementById("nutnhan2").src ="leb_on.png"
+    document.getElementById("led_on2").style.background="green"
+    document.getElementById("led_off2").style.background="gray"
     }
 }
 
 function btn2off(){
    if(confirm("Bạn có chắc chắn tắt đèn")==true){
     document.getElementById("nutnhan2").src = "leb_off.png"
+    document.getElementById("led_on2").style.background="gray"
+    document.getElementById("led_off2").style.background="red"
     }
 }
 
